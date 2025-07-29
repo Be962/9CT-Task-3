@@ -1,10 +1,14 @@
 # Project Outline
 
-## Requirements outline
+## Identifying and Defining
 
-![x](/Images/Mindmap.png)
+### Mindmap:
 
-### Functional requirements
+![Mindmap](/Images/Mindmap.png)
+
+### Purpose
+
+#### The 
 
 ### Non-functional requirements
 
