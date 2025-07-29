@@ -2,6 +2,8 @@
 
 ## Requirements outline
 
+![x](/Images/Mindmap.png)
+
 ### Functional requirements
 
 ### Non-functional requirements
