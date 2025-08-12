@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -8,52 +9,46 @@ from matplotlib.figure import Figure
 fig = Figure(figsize=(20, 16), dpi=(100))
 ax = fig.add_subplot(111)
 root = tk.Tk()
-def sort_data():
-    global Average
-    global Year
-    df = pd.read_csv('Dataset.csv')
-    df = df.drop(['Won', 'Tied', 'Draw', 'Balls', 'Column1'], axis=1)
-    Average = df.iloc[int(start_years):int(end_years), 3]
-    Year = df.iloc[int(start_years):int(end_years), 5]
+root.title('RPW through time')
 
-def get_years():
-    global start_years
-    global end_years
-    get_start_years = tk.Entry(root, width=40)
-    get_start_years.pack(pady=20, padx=20)
-    get_end_years = tk.Entry(root, width=40)
-    get_end_years.pack(pady=20, padx=20)
-    start_years = get_start_years.get()
-    end_years = get_end_years.get()
 
-def show_graph():
-    plt.title('Runs Per Wicket (RPW) over time')
-    plt.xlabel('Years')
-    plt.ylabel('RPW')
-    plt.plot(Year, Average)
-    plt.show()
+df = pd.read_csv('Dataset.csv')
+df = df.drop(['Won', 'Tied', 'Draw', 'Balls', 'Column1'], axis=1)
 
-def tkinter_show_graph():
-    root.title('Runs Per Wicket')
-    root.geometry('800x450')
-    get_start_years = tk.Entry(root, width=40)
-    get_start_years.pack(pady=20, padx=20)
-    get_end_years = tk.Entry(root, width=40)
-    get_end_years.pack(pady=20, padx=20)
-    ax.set_title('Runs Per Wicket (RPW) over time')
-    ax.set_xlabel('Years')
-    ax.set_ylabel('RPW')
-    ax.plot(Year, Average)
-    canvas = FigureCanvasTkAgg(fig, master=root)
-    canvas_widget = canvas.get_tk_widget()
-    canvas_widget.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-    years_display = tk.Label(root, text=f'Years: {start_years}-{end_years}')  
-    years_display.pack()
-    years_display.config(text=f'Years: {start_years}-{end_years}')
-    fig.canvas.draw_idle()
-    print('drew graph')
+canvas = FigureCanvasTkAgg(fig, master=root)
+canvas_widget = canvas.get_tk_widget()
+canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
-while True:
-    get_years()
-    sort_data()
-    tkinter_show_graph()
+def generate_and_update():
+    get_entry_text()
+    trigger_update()
+
+
+
+def update_graph(Year, Average):
+    ax.clear()  # Clear existing plot
+    ax.plot(Year, Average)  # Plot new data
+    canvas.draw()  # Redraw the canvas
+
+def get_entry_text():
+    global start_year
+    global end_year
+    start_year = start_year_get.get()
+    end_year = end_year_get.get()
+    print(f'{start_year}-{end_year}')
+
+def trigger_update():
+    Year = df.iloc[start_year:end_year, 5]
+    Average = df.iloc[start_year:end_year, 3]
+    update_graph(Year, Average)
+
+update_button = tk.Button(master=root, text="Update Graph", command=generate_and_update)
+update_button.pack(side=tk.BOTTOM)
+
+start_year_get = tk.Entry(root, width=30)
+start_year_get.pack(pady=20, side=tk.TOP)
+
+end_year_get = tk.Entry(root, width=20)
+end_year_get.pack(pady=20, side=tk.TOP)
+
+root.mainloop()
