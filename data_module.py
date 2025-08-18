@@ -1,54 +1,30 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import time
-import tkinter as tk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
-
-fig = Figure(figsize=(20, 16), dpi=(100))
-ax = fig.add_subplot(111)
-root = tk.Tk()
-root.title('RPW through time')
-
 
 df = pd.read_csv('Dataset.csv')
 df = df.drop(['Won', 'Tied', 'Draw', 'Balls', 'Column1'], axis=1)
+year = df.iloc[:,5]
+average = df.iloc[:, 3]
 
-canvas = FigureCanvasTkAgg(fig, master=root)
-canvas_widget = canvas.get_tk_widget()
-canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+def show_plot(year, average):
+    plt.title('Runs Per Wicket (RPW) through time')
+    plt.xlabel('Years')
+    plt.ylabel('Average')
+    plt.plot(year, average)
+    plt.show()
 
-def generate_and_update():
-    get_entry_text()
-    trigger_update()
+def filter():
+    start_years = 0
+    end_years = 0
+    while start_years < 1901 or start_years > 2025:
+        start_years = int(input('What year would you like to start as? (1901-2025)'))
+    while end_years < 1901 or end_years > 2025 and end_years < start_years:
+        end_years = int(input('What year would you like to end as? '))
+    end_years = end_years - 1907
+    start_years = start_years - 1901
+    year = df.iloc[start_years:end_years, 5]
+    average = df.iloc[start_years:end_years, 3]
+    show_plot(year, average)
 
-
-
-def update_graph(Year, Average):
-    ax.clear()  # Clear existing plot
-    ax.plot(Year, Average)  # Plot new data
-    canvas.draw()  # Redraw the canvas
-
-def get_entry_text():
-    global start_year
-    global end_year
-    start_year = start_year_get.get()
-    end_year = end_year_get.get()
-    print(f'{start_year}-{end_year}')
-
-def trigger_update():
-    Year = df.iloc[start_year:end_year, 5]
-    Average = df.iloc[start_year:end_year, 3]
-    update_graph(Year, Average)
-
-update_button = tk.Button(master=root, text="Update Graph", command=generate_and_update)
-update_button.pack(side=tk.BOTTOM)
-
-start_year_get = tk.Entry(root, width=30)
-start_year_get.pack(pady=20, side=tk.TOP)
-
-end_year_get = tk.Entry(root, width=20)
-end_year_get.pack(pady=20, side=tk.TOP)
-
-root.mainloop()
+filter()
