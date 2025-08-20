@@ -68,7 +68,10 @@
 
 ### Evaluation
 
-#### System and results in relation to requirements outline:
+#### System and results in relation to requirements outline: The system and results hits every functional and non functional requirement. For functional requirements, it uses a large csv file from excel, sorts and filters the data correctly, can be used to analyse runs per wicket in each year, and visualises the data in a matplotlib graph, that changes based on the filter. As for non-functional requirements, the ui is sleek and user friendly, and the program is reliable to use. Overall, project satisfies every requirement.
+
 #### System in relation to peer feedback:
-#### Project in relation to project management:
+
+#### Project in relation to project management: The project was managed well overall, as there was no point where it felt like I was behind. Some aspects could have gone better though. For example, I started with the idea of making the user interface graphical, this took a lot of time and I eventually discarded the progress as I thought it would be too messy. Despite this, the actual project was completed with lots of time to spare. Overall project was managed well, with room for improvement.
+
 #### System in relation to data validity
