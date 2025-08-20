@@ -7,9 +7,9 @@ while True:
     if choice == str(1):
         year, average = setup()
         show_plot(year, average)
-    if choice == str(2):
+    elif choice == str(2):
         filter()
-    if choice == str(3):
+    elif choice == str(3):
         show_other_stats()
         overallstd, overallave, overall_rpo = show_other_stats()
         print(f"Overall average: {overallave}")
@@ -18,7 +18,7 @@ while True:
         leave = input('Enter anything to go back: ')
         if leave != None:
             pass
-    if choice == str(4):
+    elif choice == str(4):
         print('Exiting program')
         break
     else:
