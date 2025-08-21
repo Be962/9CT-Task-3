@@ -53,3 +53,6 @@ def show_other_stats():
     overall_rpo = overall_rpo * 6 # Times by 6 to make it runs per over
     overall_rpo = overall_rpo.round(4) # Rounds to 4 for tidiness
     return stddf, overall_average, overall_rpo # Returns to be used in main.py
+
+def view_dataset(): # Simply shows the top and bottom 5 lines of the dataset
+    print(df) 

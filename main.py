@@ -1,9 +1,9 @@
-from data_module import filter, show_plot, show_other_stats, setup
+from data_module import filter, show_plot, show_other_stats, setup, view_dataset
 
 while True:
     setup()
     print("""<--------User Interface-------->""")
-    choice = input('What would you like to choose? \n 1. Show the full data \n 2. Filter then show data \n 3. Show other interesting stats \n 4. Exit program \n ')
+    choice = input('What would you like to choose? \n 1. Show the full data \n 2. Filter then show data \n 3. Show other interesting stats \n 4. Show dataset \n 5. Exit program \n ')
     if choice == str(1):
         year, average = setup() # Gets the year and average from setup function
         show_plot(year, average) # Plots the whole data from the first year/average 
@@ -18,8 +18,10 @@ while True:
         leave = input('Enter anything to go back: ')
         if leave != None: # Any input will trigger this and go back to main loop
             pass
-    elif choice == str(4):
+    elif choice == str(5):
         print('Exiting program')
         break # Exits the program
+    elif choice == str(4): # Calls view dataset
+        view_dataset()
     else:
         print("Please select a number between 1-4") # Handling wrong inputs
