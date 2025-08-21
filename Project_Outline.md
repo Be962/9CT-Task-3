@@ -80,8 +80,25 @@
 
 ### Peer verification
 
+
+#### My feedback (verbatim):
+
+
 | Person | Plus | Minus | Implication |
-| Charles |  | | |
+|--------|------|-------|-------------|
+| Marlon B| Very effective to visualise the sales of individual albums. Uses multiple graphs to show different pieces of data. Interface gives clean and efficient user experience. | No error handling if you do not enter a valid artist, the program quits instead. Artists are not ordered by sales (minor) | The program is very good when you enter knowing exactly what data you hope to get, e.g. wanting to know how much Cold Chisel sold. Visualising with multiple graphs is very helpful to understand scale as well, however the case sensitivity can make it difficult to navigate individual artists if you are not well versed in music. Overall extremely solid work. |
+| Maxi F| It is obvious that a lot of effort was put into this project. The program is very in depth, there are multiple options for everything, like viewing datasets. There are also multiple graphs which help to visualise the data. UX is clean and efficient, and error handling seemed to be sound. | The consumer price index graph is a little hard to understand. Also, there is limited filtering. You can look for a specific data point, however you can't filter the graphs. | The program is overall extremely solid. It is well tailored to experienced users with a good grasp of economics terminology. There is a lot of information packed into this program, and the user experience ensures that even if you are not an expert, there is still useful data to be found. It achieves its aim of showing console prices quite well. Great work. |
+| Charles M| | | |
+| Oscar D| | | |
+
+
+
+
+#### Others feedback (verbatim):
+
+| Person | Plus | Minus | Implication |
+|--------|------|-------|-------------|
+| Marlon B| User interface is smooth and provides a nice, friendly user experience. Graphs are visualised well, and it is easy to view the data for a certain period of time (e.g 1991-2002) | Only uses 1 graph which becomes a bit clunky when the whole time period is seen. | Implication: The program makes it easy to view data on batting-friendly and bowling-friendly periods in cricket, especially in different periods (e.g. whether Mark Waugh played in a bowling or batting-friendly period). Graph for whole dataset does get a bit clunky. Overall a really effort |
 
 ### Evaluation
 
